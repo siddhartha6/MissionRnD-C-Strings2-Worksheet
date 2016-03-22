@@ -13,11 +13,24 @@ OUTPUT2:will Code
 NOTES: Check Null Strings ,Include stddef for NULL if needed.Create a New string and return it ,dont modfiy
 original String
 */
-
+#include<stdio.h>
 #include <stddef.h>
 #include <stdlib.h>
 
-char * get_sub_string(char *str, int i, int j){
-
-    return NULL;
+char *get_sub_string(char *str, int i, int j)
+{
+	if (str == NULL || i >j)
+		return NULL;           //NULLcase conditions
+	
+	int index, sub_index = 0;
+	char *result = (char *)malloc((i + j - 1)*sizeof(char));
+	
+	for (index = i; index <= j; index++)
+	{
+		result[sub_index] = str[i];  //copying sub string till given range (i & j) to resultant string
+		str++;
+		sub_index++;
+	}
+	result[sub_index] = '\0';
+	return result;
 }
